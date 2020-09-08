@@ -1,26 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import SpellBuilder from './SpellBuilder';
-import axios from 'axios';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+  Route
+} from "react-router-dom"
+import SpellDetails from './SpellDetails';
+import NewSpell from './NewSpell';
+import SpellContainer from './SpellContainer';
 
 export default function App() {
 
-  useEffect(() => {
-    const fetchSpells = async () => {
-      const res = await axios.get('http://localhost:8080/spells');
-      setSpells(res.data)
-    }
-    fetchSpells()
-  }, [])
-
-  const [spells, setSpells] = useState();
-
   return(
 
-    <div className = 'App'>
+    <Router>
+      <Switch>
 
-      {spells ? spells.map( spell => <SpellBuilder spell={spell} />) : null }
+      <Route
+      exact path='/'
+      render={ () => <SpellContainer />} />
 
-    </div>
+      <Route
+      exact path='/spell/:id'
+      render={ () => <SpellDetails />} />
+
+      <Route
+      exact path='/new-spell'
+      render={ () => <NewSpell />} />
+
+      <Redirect to='/' />
+
+    </Switch>
+  </Router>
 
   )
 }

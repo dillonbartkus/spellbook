@@ -14,5 +14,41 @@ code {
 
 .App {
   width: 80%;
-  
+  margin: 5% auto;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin: 5% auto;
+  padding: 20px;
+  width: 25%;
+  cursor: pointer;
+}
+
+h1, h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.filters {
+  width: 66%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+select {
+  width: 20%;
+  padding: 12px 5px;
+}
+
+.spell-container {
+  margin: 25px 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 25px;
+  display: flex;
+  flex-flow: row wrap;
 }

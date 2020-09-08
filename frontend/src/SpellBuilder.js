@@ -6,7 +6,9 @@ export default function SpellBuilder({ spell }) {
 
         <div className = 'spell-container'>
 
-            {spell?.name}
+            <h2>{spell?.name}</h2>
+            <p>{spell?.desc}</p>
+            <p>{spell?.level}</p>
 
         </div>
     )
