@@ -14,7 +14,6 @@ export default function SpellContainer() {
       }, [])
     
     const [spells, setSpells] = useState();
-
     const [levelFilter, setLevelFilter] = useState(null);
 
     const history = useHistory();
@@ -25,16 +24,18 @@ export default function SpellContainer() {
 
             <h1>D&D 5E Spellbook</h1>
 
-            <button onClick = {() => history.push('/new-spell') } >Add a custom spell</button>
+            <button className = 'new-spell' onClick = {() => history.push('/new-spell') } >Add a custom spell</button>
 
             <div className = 'filters'>
 
                 <p>Filters:</p>
 
                 <select onChange = { e => {
-                    if (e.target.value !== 'Level:') setLevelFilter(e.target.value);
+                    if (e.target.value !== 'Level: All')  {
+                        setLevelFilter(e.target.value);
+                    } else setLevelFilter(null)
                 }}>
-                    <option>Level:</option>
+                    <option>Level: All</option>
                     <option>0</option>
                     <option>1</option>
                     <option>2</option>
