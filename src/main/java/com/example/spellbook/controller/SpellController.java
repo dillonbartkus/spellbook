@@ -42,6 +42,12 @@ public class SpellController {
         Spell s = optspell.get();
         if (spell.getName() != null)
             s.setName(spell.getName());
+        if (spell.getDesc() != null)
+            s.setDesc(spell.getDesc());
+        if (spell.getRange() != null)
+            s.setRange(spell.getRange());
+        if (spell.getHigherLevel() != null)
+            s.setHigherLevel(spell.getHigherLevel());
         spellRepository.save(s);
         return s;
     }

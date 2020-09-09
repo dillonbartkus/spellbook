@@ -7,6 +7,8 @@ export default function SpellBuilder({ spell }) {
 
     const [isEdit, setIsEdit] = useState(false);
     const [spellName, setSpellName] = useState()
+    const [spellDesc, setSpellDesc] = useState()
+    const [spellHL, setSpellHL] = useState()
 
     const deleteSpell = async () => {
         await axios.delete(`http://localhost:8080/spells/${spell.id}`)
@@ -15,7 +17,9 @@ export default function SpellBuilder({ spell }) {
 
     const editSpell = async () => {
         await axios.put(`http://localhost:8080/spells/${spell.id}`, {
-            name: spellName
+            name: spellName,
+            desc: spellDesc,
+            higherLevel: spellHL
         })
         window.location.reload();
     }
@@ -73,8 +77,8 @@ export default function SpellBuilder({ spell }) {
                 </p>
             </div>
 
-            { isEdit ? <textarea defaultValue={spell.desc}></textarea> : <p className = 'spell-desc'>{spell?.desc}</p> }
-            { isEdit ? <textarea defaultValue={spell.higherLevel}></textarea> : <p>{spell?.higherLevel}</p> }
+            { isEdit ? <textarea onChange = { e => setSpellDesc(e.target.value) } defaultValue={spell.desc}></textarea> : <p className = 'spell-desc'>{spell?.desc}</p> }
+            { isEdit ? <textarea onChange = { e => setSpellHL(e.target.value) } defaultValue={spell.higherLevel}></textarea> : <p>{spell?.higherLevel}</p> }
 
             <div className = 'minor-details'>
                 <p>Cast time: {spell?.castingTime}</p>
